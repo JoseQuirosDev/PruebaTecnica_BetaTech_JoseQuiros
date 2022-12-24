@@ -1,3 +1,11 @@
+#Tools and technologies
+* Postgre https://www.postgresql.org
+* Express https://expressjs.com
+* TypeORM https://typeorm.io
+* Docker https://docs.docker.com/get-docker/
+* JWT https://www.npmjs.com/package/jsonwebtoken
+
+
 # Steps To Run The Project
 
 First of all,  check if Docker is up and write the next command in the terminal 
