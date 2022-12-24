@@ -14,5 +14,5 @@ Finally, in other terminal, start de api
 
 * yarn start
 
-in the directory you can find a collection of postman to consume the endpoints
+In the directory you can find a collection of postman to consume the endpoints
 
