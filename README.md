@@ -24,3 +24,5 @@ Finally, in other terminal, start the API
 
 In the directory you can find a collection of postman to consume the endpoints
 
+url: http://localhost:8000/
+
