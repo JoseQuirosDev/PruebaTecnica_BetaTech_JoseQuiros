@@ -10,5 +10,9 @@ Next, its necessary make the migration, write in order the next commands
 * yarn build
 * yarn typeorm migration:run -d src/utils/data-source.ts
 
+Finally, in other terminal, start de api
 
+* yarn start
+
+in the directory you can find a collection of postman to consume the endpoints
 
