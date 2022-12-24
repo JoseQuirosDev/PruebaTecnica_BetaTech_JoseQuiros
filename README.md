@@ -18,7 +18,7 @@ Next, its necessary make the migration, write in order the next commands
 * yarn build
 * yarn typeorm migration:run -d src/utils/data-source.ts
 
-Finally, in other terminal, start de api
+Finally, in other terminal, start the API
 
 * yarn start
 
