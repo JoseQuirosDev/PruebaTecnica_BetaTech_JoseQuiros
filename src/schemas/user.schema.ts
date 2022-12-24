@@ -1,0 +1,65 @@
+import { object, string, TypeOf, z } from 'zod'; //Zod is a TypeScript-first schema declaration and validation librar
+import { RoleEnumType } from '../entities/user.entity';
+
+
+const params = {
+  params: object({
+    userId: string(),
+  }),
+};
+export const createUserSchema = object({
+  body: object({
+    name: string({
+      required_error: 'Name is required',
+    }),
+    email: string({
+      required_error: 'Email address is required',
+    }).email('Invalid email address'),
+    password: string({
+      required_error: 'Password is required',
+    })
+      .min(8, 'Password must be more than 8 characters')
+      .max(32, 'Password must be less than 32 characters'),
+    passwordConfirm: string({
+      required_error: 'Please confirm your password',
+    }),
+    role: z.optional(z.nativeEnum(RoleEnumType)),
+  }).refine((data) => data.password === data.passwordConfirm, {
+    path: ['passwordConfirm'],
+    message: 'Passwords do not match',
+  }),
+});
+
+export const loginUserSchema = object({
+  body: object({
+    email: string({
+      required_error: 'Email address is required',
+    }).email('Invalid email address'),
+    password: string({
+      required_error: 'Password is required',
+    }).min(8, 'Invalid email or password'),
+  }),
+});
+
+export type CreateUserInput = Omit<
+  TypeOf<typeof createUserSchema>['body'],
+  'passwordConfirm'
+>;
+
+export const deleteUserSchema = object({
+  ...params,
+});
+
+export const updateUserSchema = object({
+  ...params,
+  body: object({
+    name: string(),
+    email: string(),
+    password: string(),
+  }).partial(),
+});
+
+
+export type LoginUserInput = TypeOf<typeof loginUserSchema>['body'];
+export type DeleteUserInput = TypeOf<typeof deleteUserSchema>['params'];
+export type UpdateUserInput = TypeOf<typeof updateUserSchema>;
